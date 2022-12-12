@@ -177,7 +177,7 @@ AppVeyor настраивается аналогично предыдущей л
 * Runs server: `java -jar artifacts/app-order.jar`
 * Runs all tests: `./gradlew clean test`
 * [Просмотр отчета(локальное выполнение тестов)](build/reports/tests/test/index.html)
-* [Просмотр отчета(appveyor выполнение тестов при push. Можно скачать архив отчета reports.zip, расположен на вкладке Artifacts)](https://ci.appveyor.com/project/PavlyukovVladimir/pavlyukovvvqamid45autotestingautomatingbaseapi-cit/history)
+* [Просмотр отчета(appveyor выполнение тестов при push. Можно скачать архив отчета reports.zip, расположен на вкладке Artifacts)](https://ci.appveyor.com/project/PavlyukovVladimir/pavlyukovvvqamid45autotestingwebi/history)
 
 # Багрепорты
 
