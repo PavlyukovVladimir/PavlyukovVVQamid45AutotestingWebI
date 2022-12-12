@@ -178,3 +178,11 @@ AppVeyor настраивается аналогично предыдущей л
 * Runs all tests: `./gradlew clean test`
 * [Просмотр отчета(локальное выполнение тестов)](build/reports/tests/test/index.html)
 * [Просмотр отчета(appveyor выполнение тестов при push. Можно скачать архив отчета reports.zip, расположен на вкладке Artifacts)](https://ci.appveyor.com/project/PavlyukovVladimir/pavlyukovvvqamid45autotestingautomatingbaseapi-cit/history)
+
+# Багрепорты
+
+* [Ё в имени вызывает ошибку](https://github.com/PavlyukovVladimir/PavlyukovVVQamid45AutotestingWebI/issues/1)
+* [ё в имени вызывает ошибку](https://github.com/PavlyukovVladimir/PavlyukovVVQamid45AutotestingWebI/issues/2)
+* [Имя "-" не вызывает ошибку](https://github.com/PavlyukovVladimir/PavlyukovVVQamid45AutotestingWebI/issues/3)
+* [Имя с "-" в конце не вызывает ошибку](https://github.com/PavlyukovVladimir/PavlyukovVVQamid45AutotestingWebI/issues/4)
+* [Имя с "-" в начале не вызывает ошибку](https://github.com/PavlyukovVladimir/PavlyukovVVQamid45AutotestingWebI/issues/5)
