@@ -1,4 +1,4 @@
-
+[![Build status](https://ci.appveyor.com/api/projects/status/ma65xh4k85u4t1yr?svg=true)](https://ci.appveyor.com/project/PavlyukovVladimir/pavlyukovvvqamid45autotestingwebi)
 
 ***Павлюков Владимир Владимирович, группа*** **QAMID45**
 
