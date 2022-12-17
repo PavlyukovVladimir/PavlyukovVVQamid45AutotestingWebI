@@ -12,92 +12,59 @@ import java.time.Duration;
 
 public class OrderPage {
     private WebDriver webdriver;
-    private WebElement name;
-    private WebElement phone;
-    private WebElement checkBox;
-    private WebElement submit;
-    private WebElement responseText;
-    private WebElement responseH2Text;
+    private String nameSelector = "[data-test-id=name] input";
+    private String phoneSelector = "[data-test-id=phone] input";
+    private String checkBoxSelector = "[data-test-id=agreement] .checkbox__box";
+    private String agreementLabelSelector = "[data-test-id=agreement]";
+    private String submitSelector = "button";
+    private String messageOfInvalidSelector = ".input_invalid .input__sub";
+    private String responseMessageSelector = "[data-test-id=order-success]";
 
+    private WebElement css(@NotNull String selectorStr){
+        int timeout = 3;
+        WebDriverWait wait = new WebDriverWait(webdriver, Duration.ofSeconds(timeout));
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selectorStr)));
+        } catch (TimeoutException e) {
+            throw new AssertionError("The element was not found using the selector \"" +
+                    selectorStr + "\" within " + timeout + " seconds");
+        }
+        return webdriver.findElement(By.cssSelector(selectorStr));
+    }
     public OrderPage(@NotNull WebDriver driver) {
         webdriver = driver;
-        name = webdriver.findElement(By.cssSelector("[data-test-id=name] input"));
-        phone = webdriver.findElement(By.cssSelector("[data-test-id=phone] input"));
-        checkBox = webdriver.findElement(By.cssSelector("[data-test-id=agreement] span:first-child"));
-        submit = webdriver.findElement(By.cssSelector("button"));
     }
 
     public void fillName(@NotNull String name) {
-        this.name.clear();
-        this.name.sendKeys(name);
+        WebElement nameInput = css(nameSelector);
+        nameInput.clear();
+        nameInput.sendKeys(name);
     }
 
-    public String getSubNameText() {
-        WebDriverWait wait = new WebDriverWait(webdriver, Duration.ofSeconds(3));
-        String selectorStr = "[data-test-id=name] .input__sub";
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selectorStr)));
-        } catch (TimeoutException e) {
-            return null;
-        }
-        return webdriver.findElement(By.cssSelector(selectorStr)).getText();
+    public String getSubTextOfInvalid() {
+        return css(messageOfInvalidSelector).getText();
     }
 
     public void fillPhone(@NotNull String phone) {
-        this.phone.clear();
-        this.phone.sendKeys(phone);
-    }
-
-    public String getSubPhoneText() {
-        WebDriverWait wait = new WebDriverWait(webdriver, Duration.ofSeconds(3));
-        String selectorStr = "[data-test-id=phone] .input__sub";
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selectorStr)));
-        } catch (TimeoutException e) {
-            return null;
-        }
-        return webdriver.findElement(By.cssSelector(selectorStr)).getText();
+        WebElement phoneInput = css(phoneSelector);
+        phoneInput.clear();
+        phoneInput.sendKeys(phone);
     }
 
     public void clickAgreement() {
-        this.checkBox.click();
+        css(checkBoxSelector).click();
     }
 
     public boolean isCheckboxInvalidClass() {
-        WebDriverWait wait = new WebDriverWait(webdriver, Duration.ofSeconds(3));
-        String selectorStr = "[data-test-id=agreement]";
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selectorStr)));
-        } catch (TimeoutException e) {
-            return false;
-        }
-        String classStr = webdriver.findElement(By.cssSelector(selectorStr)).getAttribute("class");
+        String classStr = css(agreementLabelSelector).getAttribute("class");
         return classStr.contains("input_invalid");
     }
 
     public void clickContinue() {
-        this.submit.click();
-    }
-
-    public String getH2Text() {
-        WebDriverWait wait = new WebDriverWait(webdriver, Duration.ofSeconds(3));
-        String selectorStr = "#root h2";
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selectorStr)));
-        } catch (TimeoutException e) {
-            return null;
-        }
-        return webdriver.findElement(By.cssSelector(selectorStr)).getText();
+        css(submitSelector).click();
     }
 
     public String getResponseText() {
-        WebDriverWait wait = new WebDriverWait(webdriver, Duration.ofSeconds(3));
-        String selectorStr = "[data-test-id=order-success]";
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selectorStr)));
-        } catch (TimeoutException e) {
-            return null;
-        }
-        return webdriver.findElement(By.cssSelector(selectorStr)).getText();
+        return css(responseMessageSelector).getText();
     }
 }

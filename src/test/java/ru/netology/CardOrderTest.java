@@ -113,7 +113,8 @@ public class CardOrderTest {
         orderPage.clickAgreement();
         orderPage.clickContinue();
         String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        String actual = orderPage.getResponseText();
+        String actual = orderPage.getResponseText().trim();
+        assertEquals(expected, actual);
     }
 
     // <editor-fold desc="Name">
@@ -123,9 +124,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+71111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
-        String actual = orderPage.getSubNameText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -135,9 +135,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+71111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Поле обязательно для заполнения";
-        String actual = orderPage.getSubNameText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -147,9 +146,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+71111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Поле обязательно для заполнения";
-        String actual = orderPage.getSubNameText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -159,9 +157,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+71111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
-        String actual = orderPage.getSubNameText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -171,9 +168,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+71111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
-        String actual = orderPage.getSubNameText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -183,9 +179,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+71111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
-        String actual = orderPage.getSubNameText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -195,9 +190,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+71111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
-        String actual = orderPage.getSubNameText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
     // </editor-fold>
@@ -209,9 +203,8 @@ public class CardOrderTest {
         orderPage.fillPhone("71111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
-        String actual = orderPage.getSubPhoneText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -221,9 +214,8 @@ public class CardOrderTest {
         orderPage.fillPhone("++71111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
-        String actual = orderPage.getSubPhoneText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -233,9 +225,8 @@ public class CardOrderTest {
         orderPage.fillPhone("");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Поле обязательно для заполнения";
-        String actual = orderPage.getSubPhoneText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -245,9 +236,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+7 1111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
-        String actual = orderPage.getSubPhoneText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -257,9 +247,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+7111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
-        String actual = orderPage.getSubPhoneText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -269,9 +258,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+711111111111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
-        String actual = orderPage.getSubPhoneText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
 
@@ -281,9 +269,8 @@ public class CardOrderTest {
         orderPage.fillPhone("+711111ф1111");
         orderPage.clickAgreement();
         orderPage.clickContinue();
-        assertNull(orderPage.getResponseText());
         String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
-        String actual = orderPage.getSubPhoneText().trim();
+        String actual = orderPage.getSubTextOfInvalid().trim();
         assertEquals(expected, actual);
     }
     // </editor-fold>
@@ -295,7 +282,6 @@ public class CardOrderTest {
         orderPage.fillPhone("+91111111111");
         orderPage.clickContinue();
         assertTrue(orderPage.isCheckboxInvalidClass());
-        assertNull(orderPage.getResponseText());
     }
     // </editor-fold>
 }
